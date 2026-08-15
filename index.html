@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posture Guard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- เมนูด้านข้าง -->
+    <aside class="sidebar">
+        <h1>Posture Guard</h1>
+        <p class="subtitle">Smart Sitting System</p>
+
+        <nav>
+            <button onclick="showPage('dashboard')">🏠 Dashboard</button>
+            <button onclick="showPage('statistics')">📊 สถิติ</button>
+            <button onclick="showPage('calibration')">🎯 ตั้งค่าท่านั่ง</button>
+            <button onclick="showPage('profile')">👤 ข้อมูลส่วนตัว</button>
+            <button onclick="showPage('devices')">📡 อุปกรณ์</button>
+            <button onclick="showPage('notifications')">🔔 การแจ้งเตือน</button>
+        </nav>
+    </aside>
+
+
+    <!-- เนื้อหาหลัก -->
+    <main class="main">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="header">
+                <div>
+                    <h2>สวัสดี 👋</h2>
+                    <p>มาดูกันว่าตอนนี้คุณนั่งอยู่ในท่าที่เหมาะสมหรือไม่</p>
+                </div>
+            </div>
+
+            <!-- สถานะปัจจุบัน -->
+            <div class="status-card">
+                <div class="status-icon">🟢</div>
+
+                <div>
+                    <p>ท่านั่งปัจจุบัน</p>
+                    <h2 id="postureStatus">ปกติ</h2>
+                    <span id="postureMessage">
+                        ท่านั่งของคุณอยู่ในตำแหน่งที่เหมาะสม
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- ข้อมูล Sensor -->
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-icon">📏</div>
+                    <p>ระยะจากหน้าจอ</p>
+                    <h2><span id="screenDistance">65</span> cm</h2>
+                    <small>ค่าที่แนะนำ: 60–70 cm</small>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🪑</div>
+                    <p>ระยะหลัง–พนักพิง</p>
+                    <h2><span id="backDistance">2</span> cm</h2>
+                    <small>ค่าที่ตั้งไว้: 2 cm</small>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⏱️</div>
+                    <p>เวลาที่นั่งวันนี้</p>
+                    <h2 id="sittingTime">02:35:00</h2>
+                    <small>เวลารวมวันนี้</small>
+                </div>
+
+                <div class="card score-card">
+                    <div class="card-icon">⭐</div>
+                    <p>Posture Score</p>
+                    <h2><span id="score">92</span>/100</h2>
+                    <small>ดีมาก!</small>
+                </div>
+
+            </div>
+
+
+            <!-- คำแนะนำ -->
+            <div class="advice">
+                <h3>💡 คำแนะนำ</h3>
+                <p id="adviceText">
+                    ท่านั่งของคุณดีมาก รักษาตำแหน่งนี้ไว้!
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section id="statistics" class="page">
+
+            <h2>📊 สถิติการนั่ง</h2>
+            <p>ข้อมูลการนั่งของคุณ</p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <p>เวลานั่งทั้งหมด</p>
+                    <h2>4 ชม. 32 นาที</h2>
+                </div>
+
+                <div class="card">
+                    <p>นั่งถูกท่า</p>
+                    <h2>3 ชม. 41 นาที</h2>
+                </div>
+
+                <div class="card">
+                    <p>นั่งผิดท่า</p>
+                    <h2>51 นาที</h2>
+                </div>
+
+                <div class="card">
+                    <p>แจ้งเตือน</p>
+                    <h2>17 ครั้ง</h2>
+                </div>
+
+            </div>
+
+            <div class="chart-box">
+                <h3>Posture Score ใน 7 วันที่ผ่านมา</h3>
+
+                <div class="fake-chart">
+                    <div style="height:70%">จ.</div>
+                    <div style="height:80%">อ.</div>
+                    <div style="height:65%">พ.</div>
+                    <div style="height:90%">พฤ.</div>
+                    <div style="height:75%">ศ.</div>
+                    <div style="height:88%">ส.</div>
+                    <div style="height:92%">อา.</div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CALIBRATION -->
+        <section id="calibration" class="page">
+
+            <h2>🎯 ตั้งค่าท่านั่งที่ถูกต้อง</h2>
+
+            <div class="calibration-box">
+
+                <p>
+                    นั่งในท่าที่คุณคิดว่าเหมาะสมที่สุด
+                    จากนั้นกดปุ่มด้านล่าง
+                </p>
+
+                <button class="primary-button" onclick="startCalibration()">
+                    เริ่มตั้งค่าท่านั่ง
+                </button>
+
+                <div id="countdown"></div>
+
+                <div id="calibrationResult">
+                    <h3>ค่ามาตรฐานของคุณ</h3>
+                    <p>📏 ระยะจากหน้าจอ: <b>65 cm</b></p>
+                    <p>🪑 ระยะหลัง–พนักพิง: <b>2 cm</b></p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+        <section id="profile" class="page">
+
+            <h2>👤 ข้อมูลส่วนตัว</h2>
+
+            <div class="profile-box">
+
+                <label>ชื่อ</label>
+                <input type="text" value="Bonus">
+
+                <label>ส่วนสูง (cm)</label>
+                <input type="number" value="165">
+
+                <label>น้ำหนัก (kg)</label>
+                <input type="number" value="50">
+
+                <button class="primary-button">
+                    บันทึกข้อมูล
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEVICES -->
+        <section id="devices" class="page">
+
+            <h2>📡 อุปกรณ์</h2>
+
+            <div class="device">
+
+                <div>
+                    <h3>💻 Laptop Sensor</h3>
+                    <p>Ultrasonic Sensor</p>
+                </div>
+
+                <span class="connected">● Connected</span>
+
+            </div>
+
+            <div class="device">
+
+                <div>
+                    <h3>🪑 Chair Sensor</h3>
+                    <p>Posture Sensor</p>
+                </div>
+
+                <span class="connected">● Connected</span>
+
+            </div>
+
+            <div class="device">
+
+                <div>
+                    <h3>🔗 Board Communication</h3>
+                    <p>ESP32 ↔ ESP32</p>
+                </div>
+
+                <span class="connected">● Connected</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS -->
+        <section id="notifications" class="page">
+
+            <h2>🔔 การแจ้งเตือน</h2>
+
+            <div class="settings">
+
+                <label>
+                    <input type="checkbox" checked>
+                    แจ้งเตือนเมื่อนั่งใกล้หน้าจอเกินไป
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    แจ้งเตือนเมื่อนั่งไกลหน้าจอเกินไป
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    แจ้งเตือนเมื่อหลังอยู่ผิดตำแหน่ง
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    แจ้งเตือนเมื่อผิดท่านานเกิน 30 วินาที
+                </label>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
