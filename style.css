@@ -1,0 +1,275 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* เมนูด้านซ้าย */
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: white;
+    padding: 30px 18px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #e5e7eb;
+}
+
+.sidebar h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #8b95a7;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar button {
+    border: none;
+    background: transparent;
+    padding: 13px 15px;
+    text-align: left;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background: #eef2ff;
+}
+
+/* เนื้อหาหลัก */
+.main {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 40px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* หัวข้อ */
+.header {
+    margin-bottom: 25px;
+}
+
+.header h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #6b7280;
+}
+
+/* กล่องสถานะ */
+.status-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.status-icon {
+    font-size: 45px;
+}
+
+.status-card p {
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.status-card h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+/* การ์ดข้อมูล */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.card-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.card h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.card small {
+    color: #9ca3af;
+}
+
+/* คะแนน */
+.score-card h2 {
+    color: #4f46e5;
+}
+
+/* คำแนะนำ */
+.advice {
+    background: #eef2ff;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.advice h3 {
+    margin-bottom: 8px;
+}
+
+/* ปุ่ม */
+.primary-button {
+    border: none;
+    background: #4f46e5;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: #4338ca;
+}
+
+/* Calibration */
+.calibration-box {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    margin-top: 25px;
+    max-width: 700px;
+}
+
+#countdown {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin: 25px;
+}
+
+/* Profile */
+.profile-box {
+    background: white;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 18px;
+    margin-top: 25px;
+}
+
+.profile-box label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.profile-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+
+/* อุปกรณ์ */
+.device {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connected {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+/* การตั้งค่า */
+.settings {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    margin-top: 25px;
+    max-width: 700px;
+}
+
+.settings label {
+    display: block;
+    padding: 15px 0;
+}
+
+/* มือถือ */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    body {
+        display: block;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
